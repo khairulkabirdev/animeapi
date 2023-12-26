@@ -14,6 +14,9 @@ import meta from './routes/meta';
 import news from './routes/news';
 import chalk from 'chalk';
 import Utils from './utils';
+import ngrok from 'ngrok';
+
+
 
 export const redis =
   process.env.REDIS_HOST &&
@@ -25,6 +28,9 @@ export const redis =
 
 export const tmdbApi = process.env.TMDB_KEY && process.env.TMDB_KEY;
 (async () => {
+
+
+
   const PORT = Number(process.env.PORT) || 3000;
 
   const fastify = Fastify({
@@ -163,6 +169,15 @@ export const tmdbApi = process.env.TMDB_KEY && process.env.TMDB_KEY;
       if (e) throw e;
       console.log(`server listening on ${address}`);
     });
+
+    ngrok.connect({
+      addr: PORT,
+      authtoken: '2a3wDndWEdK9svDp7wIBZqMmJkA_53fkqBxHZqehbzfizW5kp'
+    })
+      .then((url: string) => console.log(`Ingress established at: ${url}`))
+      .catch((err: any) => console.error('Error:', err));
+
+
   } catch (err: any) {
     fastify.log.error(err);
     process.exit(1);
