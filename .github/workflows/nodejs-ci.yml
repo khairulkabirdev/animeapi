@@ -25,3 +25,8 @@ jobs:
         run: |
           npm install
           tsc
+      - name: run the code
+        run: |
+          cd dist
+          node main.js
+            
