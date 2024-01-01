@@ -27,7 +27,7 @@
         "@fastify/cors": "^8.2.0",
         "@ngrok/ngrok": "^0.9.1",
         "@types/fastify-cors": "^2.1.0",
-        "@types/node": "^18.11.17",
+        "@types/node": "^20.10.6",
         "@types/ws": "^8.5.3",
         "axios": "^1.0.0",
         "chalk": "4.1.2",
